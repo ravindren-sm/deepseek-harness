@@ -317,7 +317,7 @@ function ProjectRow({
         <IconTriangleRightFillRegular className={clsx(css.arrow, row.expanded && css.arrowOpen)} />
       </span>
       <span className={css.projectText}>
-        <span className={css.title}>{label}</span>
+        <span className={clsx(css.title, row.workspaceId === undefined && css.ungroupedTitle)}>{label}</span>
       </span>
       <span className={css.rowActions}>
         {workspaceMenuTarget !== undefined && (

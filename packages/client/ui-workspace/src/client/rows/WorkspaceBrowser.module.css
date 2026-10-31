@@ -470,8 +470,11 @@
   80%, 100% { opacity: 1; }
 }
 
-/* One workspace section: header row + a compact expanded session run. */
+/* One workspace section: header row + a compact expanded session run. Its
+   session rows nest one step inside the header; the step equals the per-depth
+   Workspace indent (WorkspaceBrowser.tsx `depth * 12`). */
 .groupSection {
+  --dsh-session-nest: 12px;
   position: relative;
 }
 
@@ -532,7 +535,7 @@
   height: 28px;
   border: none;
   border-radius: var(--dsw-radius-sm);
-  padding: 0 var(--dsh-sidebar-row-padding) 0 calc(var(--dsh-sidebar-row-padding) + 16px + var(--dsh-sidebar-label-gap) + var(--dsh-workspace-indent, 0px));
+  padding: 0 var(--dsh-sidebar-row-padding) 0 calc(var(--dsh-sidebar-row-padding) + 16px + var(--dsh-sidebar-label-gap) + var(--dsh-workspace-indent, 0px) + var(--dsh-session-nest, 0px));
   background: transparent;
   cursor: pointer;
   text-align: left;

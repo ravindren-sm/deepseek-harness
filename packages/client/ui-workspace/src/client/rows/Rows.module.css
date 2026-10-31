@@ -119,10 +119,14 @@
   height: 20px;
 }
 
-/* Session titles share the workspace icon slot and compact label gap. */
+/* Session titles share the workspace icon slot and compact label gap. Under a
+   Workspace header, a session row adds the group's nesting step
+   (`--dsh-session-nest`, set by WorkspaceBrowser.module.css .groupSection), so
+   it sits one level inside its Workspace like a child Workspace does. */
 .sessionRow {
   height: 32px;
   gap: 0;
+  padding-inline-start: calc(var(--dsh-sidebar-row-padding) - var(--dsh-sidebar-paint-inset) + var(--dsh-workspace-indent, 0px) + var(--dsh-session-nest, 0px));
 }
 
 .sessionRow .title {
@@ -146,6 +150,12 @@
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* The ungrouped bucket is a system catch-all, not a user Workspace: its
+   dictionary label takes the secondary ink so it reads apart from folders. */
+.ungroupedTitle {
+  color: var(--dsw-alias-label-secondary);
 }
 
 .folderActive {
